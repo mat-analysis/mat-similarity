@@ -1,0 +1,15 @@
+CHANGELOG.md
+LICENCE
+MANIFEST.in
+README.md
+Steps to Build.txt
+pyproject.toml
+setup.py
+mat_similarity.egg-info/PKG-INFO
+mat_similarity.egg-info/SOURCES.txt
+mat_similarity.egg-info/dependency_links.txt
+mat_similarity.egg-info/requires.txt
+mat_similarity.egg-info/top_level.txt
+matsimilarity/LICENSE
+matsimilarity/README.md
+matsimilarity/__init__.py
