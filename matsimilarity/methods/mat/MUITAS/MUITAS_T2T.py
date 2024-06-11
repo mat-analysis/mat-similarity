@@ -16,6 +16,7 @@ Authors:
 - Tarlis Portela
 - Lucas May Petry (adapted)
 '''
+
 # --------------------------------------------------------------------------------
 import time
 import pandas as pd
@@ -23,7 +24,6 @@ import numpy as np
 import math
 from datetime import datetime
 from typing import List, Dict, Union
-
 # --------------------------------------------------------------------------------
 # Import class and data model
 from matdata.preprocess import *
