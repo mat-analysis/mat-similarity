@@ -31,8 +31,10 @@ from matdata.dataset import *
 from matmodel.base import *
 from matmodel.descriptor import *
 
+from matsimilarity.methods.core import SimilarityMeasure
+
 # --------------------------------------------------------------------------------
-class MUITAS:
+class MUITAS(SimilarityMeasure):
     """
     MUITAS: Similarity Measure for Multiple Aspect Trajectory
 
@@ -128,7 +130,7 @@ class MUITAS:
         else:
             raise TypeError("att_type should be a string or None.")
 
-    def similarity_of(self, t1: MultipleAspectSequence, t2: MultipleAspectSequence) -> float:
+    def similarity(self, t1: MultipleAspectSequence, t2: MultipleAspectSequence) -> float:
         """
         Compute the similarity between two multiple aspect sequences.
 
