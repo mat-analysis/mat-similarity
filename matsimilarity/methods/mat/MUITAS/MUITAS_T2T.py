@@ -47,6 +47,13 @@ class MUITAS(SimilarityMeasure):
         _data_descriptor (DataDescriptor): The data descriptor for the dataset.
         features (List[Feature]): A list to store features with their attributes and weights.
         _default_thresholds (Dict[str, float]): Default threshold values based on attribute types.
+        
+    References
+    ----------
+    `Petry, L. M., Ferrero, C. A., Alvares, L. O., Renso, C., & Bogorny, V.
+    (2019). Towards Semantic-Aware Multiple-Aspect Trajectory Similarity
+    Measuring. Transactions in GIS (accepted), XX(X), XXX-XXX.
+    <https://onlinelibrary.wiley.com/journal/14679671>`__
     """
     def __init__(self, dataset_descriptor: DataDescriptor = None):
         """
