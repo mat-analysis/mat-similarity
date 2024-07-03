@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from matmodel.base import MultipleAspectSequence
+
 class SimilarityMeasure(ABC):
 
     def similarity(self, t1: MultipleAspectSequence, t2: MultipleAspectSequence) -> float:

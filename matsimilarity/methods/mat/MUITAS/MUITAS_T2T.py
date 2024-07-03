@@ -31,7 +31,7 @@ from matdata.dataset import *
 from matmodel.base import *
 from matmodel.descriptor import *
 
-from matsimilarity.methods.core import SimilarityMeasure
+from matsimilarity.core import SimilarityMeasure
 
 # --------------------------------------------------------------------------------
 class MUITAS(SimilarityMeasure):
