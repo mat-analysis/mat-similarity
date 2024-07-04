@@ -7,9 +7,9 @@ from matmodel.descriptor import *
 from matsimilarity.core import SimilarityMeasure
 
 # --------------------------------------------------------------------------------
-class EDR(SimilarityMeasure):
+class LCSS(SimilarityMeasure):
     """
-    EDR: Edit Distance on Real sequence
+    LCSS: Longest Common SubSequence.
 
     This class provides methods to analyze and measure the similarity between multiple aspect trajectory data.
 
@@ -18,10 +18,10 @@ class EDR(SimilarityMeasure):
         
     References
     ----------
-    `Chen, L., Özsu, M. T., & Oria, V. (2005, June). Robust and fast
-    similarity search for moving object trajectories. In Proceedings
-    of the 2005 ACM SIGMOD international conference on Management of
-    data (pp. 491-502). ACM. <https://dl.acm.org/citation.cfm?id=1066213>`__
+    `Vlachos, M., Kollios, G., & Gunopulos, D. (2002). Discovering similar
+    multidimensional trajectories. In Data Engineering, 2002. Proceedings.
+    18th International Conference on (pp. 673-684). IEEE.
+    <https://ieeexplore.ieee.org/abstract/document/994784/>`__
     """
     def __init__(self, dataset_descriptor: DataDescriptor = None):
         super().__init__(dataset_descriptor)
@@ -37,18 +37,18 @@ class EDR(SimilarityMeasure):
         Returns:
             float: The computed similarity score.
         """
-        matrix = np.zeros(shape=[t1.size + 1, t2.size + 1])
-        matrix[:, 0] = np.r_[0:t1.size+1]
-        matrix[0] = np.r_[0:t2.size+1]
+        matrix = np.zeros(shape=[2, t2.size + 1])
 
         for i, p1 in enumerate(t1.points):
+            ndx = i & 1
+            ndx1 = int(not ndx)
             for j, p2 in enumerate(t2.points):
-                cost = self._match(p1, p2)
-                matrix[i+1][j+1] = min(matrix[i][j] + cost,
-                                       min(matrix[i+1][j] + 1,
-                                           matrix[i][j+1] + 1))
+                if self._match(p1, p2):
+                    matrix[ndx1][j+1] = matrix[ndx][j] + 1
+                else:
+                    matrix[ndx1][j+1] = max(matrix[ndx1][j], matrix[ndx][j+1])
 
-        return 1 - matrix[t1.size][t2.size] / max(t1.size, t2.size)
+        return matrix[1][t2.size] / min(t1.size, t2.size)
 
     def _match(self, p1: Point = None, p2: Point = None) -> int:
         for idx, _ in enumerate(self.attributes):
