@@ -1,6 +1,7 @@
 CHANGELOG.md
 LICENCE
 MANIFEST.in
+MAT-similarity-Tutorial.ipynb
 README.md
 Steps to Build.txt
 pyproject.toml
@@ -13,3 +14,14 @@ mat_similarity.egg-info/top_level.txt
 matsimilarity/LICENSE
 matsimilarity/README.md
 matsimilarity/__init__.py
+matsimilarity/core/SimilarityMeasure.py
+matsimilarity/core/__init__.py
+matsimilarity/core/utils.py
+matsimilarity/methods/__init__.py
+matsimilarity/methods/mat/__init__.py
+matsimilarity/methods/mat/EDR/EDR_T2T.py
+matsimilarity/methods/mat/EDR/__init__.py
+matsimilarity/methods/mat/LCSS/LCSS_T2T.py
+matsimilarity/methods/mat/MSM/MSM_T2T.py
+matsimilarity/methods/mat/MUITAS/MUITAS_T2T.py
+matsimilarity/methods/mat/MUITAS/__init__.py

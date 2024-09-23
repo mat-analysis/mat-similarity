@@ -29,6 +29,7 @@ class MSM(SimilarityMeasure):
         if isinstance(weights, np.ndarray):
             weights_sum = weights.sum()
         else:
+            weights = [1.0 for _ in self.attributes]
             weights_sum = sum(weights)
         weights = np.array(weights)
         self.weights = weights / weights_sum

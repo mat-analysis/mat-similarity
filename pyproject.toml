@@ -1,6 +1,6 @@
 [project]
 name = "mat-similarity"
-version = "0.1b0"
+version = "0.1b1"
 description = "Similarity Methods and Functions for Multiple Aspect Trajectory Data Mining"
 authors = [
     {name = "Vanessa Lago Machado", email = "vanessalagomachado@gmail.com"},

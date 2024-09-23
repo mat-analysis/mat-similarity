@@ -7,9 +7,9 @@ from matmodel.descriptor import *
 from matsimilarity.core import SimilarityMeasure
 
 # --------------------------------------------------------------------------------
-class MSM(SimilarityMeasure):
+class LCSS(SimilarityMeasure):
     """
-    MSM: Multidimensional Similarity Measure.
+    LCSS: Longest Common SubSequence.
 
     This class provides methods to analyze and measure the similarity between multiple aspect trajectory data.
 
@@ -18,21 +18,13 @@ class MSM(SimilarityMeasure):
         
     References
     ----------
-    `Furtado, A. S., Kopanaki, D., Alvares, L. O., & Bogorny, V. (2016).
-    Multidimensional similarity measuring for semantic trajectories.
-    Transactions in GIS, 20(2), 280-298.
-    <https://onlinelibrary.wiley.com/doi/abs/10.1111/tgis.12156>`__
+    `Vlachos, M., Kollios, G., & Gunopulos, D. (2002). Discovering similar
+    multidimensional trajectories. In Data Engineering, 2002. Proceedings.
+    18th International Conference on (pp. 673-684). IEEE.
+    <https://ieeexplore.ieee.org/abstract/document/994784/>`__
     """
-    def __init__(self, dataset_descriptor: DataDescriptor = None, weights = []):
+    def __init__(self, dataset_descriptor: DataDescriptor = None):
         super().__init__(dataset_descriptor)
-        
-        if isinstance(weights, np.ndarray):
-            weights_sum = weights.sum()
-        else:
-            weights = [1.0 for _ in self.attributes]
-            weights_sum = sum(weights)
-        weights = np.array(weights)
-        self.weights = weights / weights_sum
     
     def similarity(self, t1: MultipleAspectSequence, t2: MultipleAspectSequence) -> float:
         """
@@ -45,22 +37,28 @@ class MSM(SimilarityMeasure):
         Returns:
             float: The computed similarity score.
         """
-        matrix = np.zeros(shape=(t1.size, t2.size))
+        matrix = np.zeros(shape=[2, t2.size + 1])
 
         for i, p1 in enumerate(t1.points):
-            matrix[i] = [self._score(p1, p2) for p2 in t2.points]
+            ndx = i & 1
+            ndx1 = int(not ndx)
+            for j, p2 in enumerate(t2.points):
+                if self._match(p1, p2):
+                    matrix[ndx1][j+1] = matrix[ndx][j] + 1
+                else:
+                    matrix[ndx1][j+1] = max(matrix[ndx1][j], matrix[ndx][j+1])
 
-        parity1 = matrix.max(axis=1).sum()
-        parity2 = matrix.max(axis=0).sum()
-        return (parity1 + parity2) / (t1.size + t2.size)
+        return matrix[1][t2.size] / min(t1.size, t2.size)
 
-    def _score(self, p1: Point = None, p2: Point = None) -> float:
-        matches = np.zeros(len(self.attributes))
+    def _match(self, p1: Point = None, p2: Point = None) -> int:
         for idx, _ in enumerate(self.attributes):
             a1 = p1.aspects[idx]
             a2 = p2.aspects[idx]
             attr = self._data_descriptor.attributes[idx]
-            threshold = self.thresholds.get(idx, 0)
             distance = attr.comparator.distance(a1, a2)
-            matches[idx] = distance <= threshold
-        return sum(matches * self.weights)
+            threshold = self.thresholds.get(idx, 0)
+            if distance > threshold:
+                break
+        else:
+            return 0
+        return 1
