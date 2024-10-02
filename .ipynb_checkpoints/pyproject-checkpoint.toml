@@ -1,6 +1,6 @@
 [project]
 name = "mat-similarity"
-version = "0.1b1"
+version = "0.1rc1"
 description = "Similarity Methods and Functions for Multiple Aspect Trajectory Data Mining"
 authors = [
     {name = "Vanessa Lago Machado", email = "vanessalagomachado@gmail.com"},
@@ -69,7 +69,7 @@ dl = [
 [project.urls]
 "Homepage" = "https://github.com/mat-analysis/mat-similarity"
 "Repository" = "https://github.com/mat-analysis/mat-similarity"
-"Documentation" = "https://github.com/mat-analysis/mat-similarity/blob/main/README.md"
+"Documentation" = "https://mat-analysis.github.io/mat-tools/mat-similarity/index.html"
 "Download" = "https://pypi.org/project/mat-similarity/#files"
 "Bug Tracker" = "https://github.com/mat-analysis/mat-similarity/issues"
 

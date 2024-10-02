@@ -1,36 +1,36 @@
 # MAT-similarity: Similarity Methods and Functions for Multiple Aspect Trajectory Data Mining \[MAT-Tools Framework\]
 ---
 
-\[[Publication](#)\] \[[citation.bib](citation.bib)\] \[[GitHub](https://github.com/mat-analysis/mat-similarity)\] \[[PyPi](https://pypi.org/project/mat-similarity/)\]
+\[[Publication](#)\] \[[Bibtex](https://github.com/mat-analysis/mat-tools/blob/main/references/mat-tools.bib)\] \[[GitHub](https://github.com/mat-analysis/mat-similarity)\] \[[PyPi](https://pypi.org/project/mat-similarity/)\]
 
 
-The present application offers a tool, to support the user in the data mining task of multiple aspect trajectories, specifically for measuring similarity of its complex data. It integrates into a unique platform the fragmented approaches available for multiple aspects trajectories and in general for multidimensional sequence classification into a unique web-based and python library system. 
+The present application offers a tool, to support the user in the data mining task of multiple aspect trajectories, specifically for **measuring similarity** of its complex data. It integrates into a unique platform the fragmented approaches available for multiple aspects trajectories and in general for multidimensional sequence classification into a unique web-based and python library system. 
 
 Created on Apr, 2024
 Copyright (C) 2024, License GPL Version 3 or superior (see LICENSE file)
 
 ### Main Modules
 
+The implemented similarity measure classes for MAT:
 
+1. **MUITAS**: Semantic-Aware Multiple-Aspect Trajectory Similarity measure.
+2. **MSM**: Multidimensional similarity measuring for semantic trajectories.
+3. **LCSS**: Longest Common Subsequence MAT similarity measure.
+4. **EDR**: Edit Distance on Real sequences MAT similarity measure.
 
 ### Installation
 
 Install directly from PyPi repository, or, download from github. (python >= 3.7 required)
 
 ```bash
-    pip install matsimilarity
+    pip install mat-similarity
 ```
 
 ### Citing
 
 If you use `mat-similarity` please cite the following paper:
 
-**TODO**
-
-Bibtex:
-```bash
-@inproceedings{...}
-```
+ - Portela, T. T.; Machado, V. L.; Renso, C. Unified Approach to Trajectory Data Mining and Multi-Aspect Trajectory Analysis with MAT-Tools Framework. In: SIMPÓSIO BRASILEIRO DE BANCO DE DADOS (SBBD), 39. , 2024, Florianópolis/SC. \[[Bibtex](https://github.com/mat-analysis/mat-tools/blob/main/references/mat-tools.bib)\]
 
 ### Collaborate with us
 
@@ -46,4 +46,4 @@ This package is part of _MAT-Tools Framework_ for Multiple Aspect Trajectory Dat
 
 ### Change Log
 
-This is a package under construction, see [CHANGELOG.md](./CHANGELOG.md)
+This is a package under construction, see [CHANGELOG.md](https://github.com/mat-analysis/mat-similarity/blob/main/CHANGELOG.md)

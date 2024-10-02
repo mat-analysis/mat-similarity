@@ -1,7 +1,11 @@
-# Changelog
+# Change Log
 
 <!--next-version-placeholder-->
 
-## v0.1rc0 (dd/MM/yyyy)
+## v0.1
 
-- First release (UNDER DEVELOPMENT)
+- First release
+
+## TODO
+
+- Check and test LCSS, EDR, and MSM implementations
